@@ -1,7 +1,7 @@
 function Contract (){
     return(
         <>
-            <h1>This is Contract</h1>
+        <h1>This is Con</h1>
         </>
     )
 }

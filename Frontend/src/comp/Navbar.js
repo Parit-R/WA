@@ -9,7 +9,7 @@ class Navbar extends Component {
     return (
       <nav className="NavbarItems">
         <h1 className="navbar-logo">Title</h1>
-        
+      
         <ul className="nav-menu">
           {MenuItems.map((item, index) => {
             return (
@@ -21,7 +21,11 @@ class Navbar extends Component {
               </li>
             );
           })}
-          <button>Sign Up</button>
+           <li>
+            <Link to="/Login">
+              <button>Sign Up</button>
+            </Link>
+          </li>
         </ul>
       </nav>
     );

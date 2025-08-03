@@ -8,46 +8,54 @@ import Home from './routes/home.js';
 import About from './routes/About.js';
 import Contract from './routes/Contract.js';
 import Service from './routes/Services.js';
+import SignIn from "./routes/SignIn.js";
+
 import { Routes, Route } from 'react-router-dom';
+import Login from './routes/Login.js';
 
 export default function App() {
-  const [data, setData] = useState();
+  // const [data, setData] = useState();
 
-  //Define getData before useEffect
-  const getData = async () => {
-    try {
-      const response = await axios.get("http://localhost:3000/getData");
-      setData(response.data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+  // //Define getData before useEffect
+  // const getData = async () => {
+  //   try {
+  //     const response = await axios.get("http://localhost:3000/getData");
+  //     setData(response.data);
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error);
+  //   }
+  // };
 
-  useEffect(() => {
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   getData();
+  // }, []);
 
   return (
     <div className="App">
-      <Navbar></Navbar>
+      <Navbar> </Navbar> 
       <Routes>
         <Route path = "/" element={<Home/>}/>
         <Route path = "/about" element={<About/>}/>
         <Route path = "/service" element={<Service/>}/>
         <Route path = "/contract" element={<Contract/>}/>
+        <Route path="/Login" element={<Login/>}/>
+        <Route path="/SignIn" element={<SignIn/>}/>
       </Routes>
       
-        {data}
+      
+      
+      
+      <footer class="bg-dark text-white text-center p-3" style={{marginTop: 100}}>
+            &copy; 2025 Parit Rungrueang
+      </footer>
+
+
     </div>
+
+
 
   );
 }
-// 
-  // { <footer class="bg-dark text-white text-center p-3">
-  //       <div class="container">
-  //           &copy; 2025 Parit Rungrueang
-  //       </div>
-  //   </footer> }
 
 
 
@@ -74,11 +82,5 @@ export default function App() {
 
 export default App;*/
       // {/<div>
-      //   <h1 className="allcard" >
-      //     <div className="card"><img src="https://cdn.pixabay.com/photo/2021/08/27/18/50/water-6579313_1280.jpg" alt="A" height={150}></img></div>
-      //     <div className="card"><img src="https://cdn.pixabay.com/photo/2022/11/05/19/56/bachalpsee-7572681_1280.jpg" alt="A" height={150}></img></div>
-      //     <div className="card"><img src="https://cdn.pixabay.com/photo/2024/10/23/09/00/dorset-9141987_1280.jpg" alt="A" height={150}></img></div>
-      //     <div className="card"><img src="https://cdn.pixabay.com/photo/2021/08/01/17/31/path-6514885_1280.jpg" alt="A" height={150}></img></div>
-          
-      //    </h1>
+      
       // </div> }
