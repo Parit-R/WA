@@ -1,0 +1,19 @@
+Get-ExecutionPolicy to Restricted
+Execution Policy Change for npm to work
+npx create-react-app my-react-app
+cd ไป folder
+npm start to run website
+
+in classname 
+fas is form font awesome
+if want to use input this in idex.html
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+npm ย่อมาจาก Node Package Manager
+
+icon
+https://fontawesome.com/icons 
+
+image
+https://pixabay.com/images/search/nature/ 
+just copy image address

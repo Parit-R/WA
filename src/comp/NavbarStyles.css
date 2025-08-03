@@ -1,0 +1,51 @@
+.NavbarItems{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  box-shadow: 0 5px 15px rgb(0, 0, 0);/*x y blur*/
+  height: 80px;
+  border-radius: 15px;
+}
+.navbar-logo{
+  color: black;
+  font-size: 2;
+}
+.nav-menu{
+  display: grid;
+  grid-template-columns: repeat(6,auto);/*6 element*/
+  grid-gap: 15px;
+  list-style: none;/*remove dot*/
+  align-items: center;
+}
+.nav-links{
+  text-decoration: none;/*remove under link*/
+  color: black;
+  font-size: 1.2rem;/*rem is basicly mutipy 10*1.2*/
+  padding: 0.7rem 1rem;
+  white-space: nowrap;/*make it 1 line when zoom in*/
+}
+.nav-links i{/*i is i form html icon*/
+  padding-right: 10px;
+}
+.nav-links:hover{
+  background-color: green;
+  color: white;
+  border-radius: 5px;
+  transition: 0.2s linear;
+}
+.nav-links-mobile{
+  display: none;
+}
+button{
+  padding: 0.5rem 1rem;
+  white-space: nowrap;
+  border-radius: 0.3rem;
+  border: none;
+  cursor: pointer;
+}
+button:hover{
+  background-color: black;
+  color: white;
+  transition: 0.2s linear;
+}
