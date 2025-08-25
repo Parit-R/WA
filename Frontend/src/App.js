@@ -10,6 +10,7 @@ import Contract from './routes/Contract.js';
 import Service from './routes/Services.js';
 import SignIn from "./routes/SignIn.js";
 import Login from './routes/Login.js';
+import TestR from './routes/testR.js';
 
 import { Routes, Route } from 'react-router-dom';
 
@@ -26,6 +27,7 @@ export default function App() {
         <Route path = "/contract" element={<Contract/>}/>
         <Route path="/Login" element={<Login/>}/>
         <Route path="/SignIn" element={<SignIn/>}/>
+        <Route path="/testR" element={<TestR/>}/>
       </Routes>
       
       <footer className="bg-dark text-white text-center " style={{marginTop: 100}}>

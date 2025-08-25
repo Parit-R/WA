@@ -14,9 +14,11 @@ function Login() {
 
     axios.post('http://localhost:8081/Login', values)
       .then(res => {
-        if (res.data === "Success") {
+        console.log("Backend response:", res.data);
+        if(res.data.Status === "Success"){
           navigate("/");
-        } else{
+          console.log("Login Success");
+        }else{
           console.log("not Exit");
         }
       })
@@ -50,6 +52,7 @@ function Login() {
           <p>
             Don t Have Account?
             <Link to="/SignIn">Register</Link>
+            
           </p>
         </div>
       </div>
