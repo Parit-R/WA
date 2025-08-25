@@ -1,6 +1,7 @@
 import express from 'express';
 import mysql from 'mysql';
 import cors from 'cors';
+import bcrypt from 'bcrypt';
 
 const app = express();
 app.use(cors());
@@ -16,28 +17,53 @@ const db = mysql.createConnection({
 
 app.post('/SignIn', (req, res) => {
     console.log(req.body);
-    const sql = "INSERT INTO login (name, email, password) VALUES (?, ?, ?)";
-    db.query(sql, [req.body.name, req.body.email, req.body.password], (err, result) => {
-        if (err) {
-            console.error("MySQL Error: ", err);
-            return res.status(500).json({ error: err.message });
-        }
-        return res.json({ message: "Sign In success", result });
-    });
-});
-
-app.post('/Login', (req, res) => {
-    console.log(req.body);
-    const sql = "SELECT * FROM login WHERE `email` = ? AND `password` = ?";
-    db.query(sql, [req.body.email, req.body.password], (err, data) => {
+    const checkEmail = "SELECT * FROM login WHERE email = ?";
+    db.query(checkEmail, [req.body.email], (err, data) => {
         if (err) {
             console.error("MySQL Error: ", err);
             return res.status(500).json({ error: err.message });
         }
         if (data.length > 0) {
-            return res.json("Success");
-        } else {
-            return res.json("fail");
+            return res.json({ Error: "Email already exists" });
+        }
+        const sql = "INSERT INTO login (name, email, password) VALUES (?, ?, ?)";
+        bcrypt.hash(req.body.password.toString(), 10, (err, hash) => {
+            if (err) return res.json({ Error: "Error hash" });
+            const values = [
+                req.body.name,
+                req.body.email,
+                hash
+            ]
+            db.query(sql, values, (err, result) => {
+                if (err) {
+                    console.error("MySQL Error: ", err);
+                    return res.status(500).json({ error: err.message });
+                }
+                return res.json({ message: "Register Success", Status: "Success", result });
+            });
+        });
+    });
+});
+
+app.post('/Login', (req, res) => {
+    console.log(req.body);
+    const sql = "SELECT * FROM login WHERE email = ?";
+    db.query(sql, [req.body.email], (err, data) => {
+        if (err) {
+            console.error("MySQL Error: ", err);
+            return res.status(500).json({ error: err.message });
+        }
+        if (data.length > 0) {//เจอ
+            bcrypt.compare(req.body.password.toString(), data[0].password, (err, response) => {
+                if (err) return res.json({ Error: "Password compare Error" });
+                if (response) {
+                    return res.json({ Status: "Success" });
+                } else {
+                    return res.json({ Error: "Password not mach" });
+                }
+            })
+        } else {//ไ่่เจอ
+            return res.json("Fail");
         }
     });
 });
