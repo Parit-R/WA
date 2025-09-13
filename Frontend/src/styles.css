@@ -7,13 +7,3 @@
   font-family: sans-serif;
   text-align: center;
 }
-.allcard{
-  display: flex;
-  justify-content: center;
-}
-.card{
-  margin: 50px;
-}
-.container{
-  justify-content: last baseline;
-}

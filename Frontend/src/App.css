@@ -1,6 +1,6 @@
-.App {
- /* text-align: center;*/
-}
+/*.App {
+  text-align: center;
+}*/
 
 .App-logo {
   height: 40vmin;
@@ -38,4 +38,11 @@
 }
 .container{
   justify-content: flex-end;
+}
+body{
+  background-color: aliceblue;
+}
+
+.container{
+  justify-content: last baseline;
 }

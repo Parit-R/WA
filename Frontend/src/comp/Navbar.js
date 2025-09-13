@@ -21,11 +21,11 @@ class Navbar extends Component {
               </li>
             );
           })}
-          <li>
+          {/* <li>
             <Link to="/Login">
-              <button>Sign Up</button>
+              <button>Login</button>
             </Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
     );

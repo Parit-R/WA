@@ -9,6 +9,7 @@ function Login() {
   })
 
   const navigate = useNavigate();
+  axios.defaults.withCredentials = true;
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -19,7 +20,7 @@ function Login() {
           navigate("/");
           console.log("Login Success");
         }else{
-          console.log("not Exit");
+          alert(res.data.Error);
         }
       })
       .catch(err => console.log(err));
@@ -31,7 +32,6 @@ function Login() {
         <form method="post" action="" onSubmit={handleSubmit}>
 
           <div className="input-group">
-            <label htmlFor="email"></label>
             <input
               type="email" id="email" name="email" placeholder="Email" required
               onChange={e => setValues({ ...values, email: e.target.value })}
@@ -39,7 +39,6 @@ function Login() {
           </div>
 
           <div className="input-group">
-            <label htmlFor="password"></label>
             <input
               type="password" id="password" name="password" placeholder="Password" required
               onChange={e => setValues({ ...values, password: e.target.value })}
@@ -51,7 +50,7 @@ function Login() {
         <div className="links">
           <p>
             Don t Have Account?
-            <Link to="/SignIn">Register</Link>
+            <Link to="/Register">Register</Link>
             
           </p>
         </div>

@@ -8,16 +8,18 @@ import Home from './routes/home.js';
 import About from './routes/About.js';
 import Contract from './routes/Contract.js';
 import Service from './routes/Services.js';
-import SignIn from "./routes/SignIn.js";
+import Register from "./routes/Register.js";
 import Login from './routes/Login.js';
 import TestR from './routes/testR.js';
+import Add from './routes/add.js'
 
 import { Routes, Route } from 'react-router-dom';
 
 
-export default function App() {
 
+export default function App() {
   return (
+    
     <div className="App">
       <Navbar></Navbar> 
       <Routes>
@@ -26,7 +28,8 @@ export default function App() {
         <Route path = "/service" element={<Service/>}/>
         <Route path = "/contract" element={<Contract/>}/>
         <Route path="/Login" element={<Login/>}/>
-        <Route path="/SignIn" element={<SignIn/>}/>
+        <Route path="/register" element={<Register/>}/>
+        <Route path="/add" element={<Add/>}/>
         <Route path="/testR" element={<TestR/>}/>
       </Routes>
       
