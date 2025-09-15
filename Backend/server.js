@@ -90,6 +90,7 @@ app.post('/Login', (req, res) => {
                     const name = data[0].name;
                     const token = jwt.sign({name}, "jwt-key", {expiresIn: '1d'});
                     res.cookie('token', token);
+
                     return res.json({ Status: "Success" });
                 } else {
                     return res.json({ Error: "Password not mach" });
@@ -100,6 +101,32 @@ app.post('/Login', (req, res) => {
         }
     });
 });
+
+const verifyUser =(req, res, next) => {
+    const token = req.cookies.token;
+    if(!token){
+         return res.json({ Error: "You are not auth"});
+    } else{
+        jwt.verify(token, "jwt-key", (err, decoded) => {
+            if (err) {
+                return res.json({Error: "Token err"});
+            } else {
+                req.name = decoded.name;
+                next();
+            }
+            
+        })
+    }
+}
+
+app.get('/',verifyUser ,(req, res) =>{
+ return res.json({Status: "Success" , name : req.name});
+})
+
+app.post('/logout',(req, res) =>{
+    res.clearCookie('token');
+    return res.json({Status: "Success"});
+})
 
 app.listen(8081, () => {
     console.log("Server running on port 8081");
