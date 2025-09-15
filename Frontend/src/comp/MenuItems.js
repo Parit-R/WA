@@ -27,13 +27,13 @@ export const MenuItems = [
     icon: "fa-solid fa-address-book",
     color: "#d00000"
   },
-    {
-    title: "Add",
-    url: "/add",
-    cName: "nav-links",
-    icon: "fa-solid fa-address-book",
-    color: "#d00000"
-  },
+  //   {
+  //   title: "Add",
+  //   url: "/add",
+  //   cName: "nav-links",
+  //   icon: "fa-solid fa-address-book",
+  //   color: "#d00000"
+  // },
   {
     title: "Sign Up",
     url: "/Signup",

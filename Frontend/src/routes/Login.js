@@ -18,6 +18,7 @@ function Login() {
         console.log("Backend response:", res.data);
         if(res.data.Status === "Success"){
           navigate("/");
+          window.location.reload();
           console.log("Login Success");
         }else{
           alert(res.data.Error);

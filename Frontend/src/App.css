@@ -39,9 +39,7 @@
 .container{
   justify-content: flex-end;
 }
-body{
-  background-color: aliceblue;
-}
+
 
 .container{
   justify-content: last baseline;

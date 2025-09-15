@@ -21,7 +21,7 @@ export default function App() {
   return (
     
     <div className="App">
-      <Navbar></Navbar> 
+      <Navbar></Navbar>
       <Routes>
         <Route path = "/" element={<Home/>}/>
         <Route path = "/about" element={<About/>}/>
@@ -32,7 +32,7 @@ export default function App() {
         <Route path="/add" element={<Add/>}/>
         <Route path="/testR" element={<TestR/>}/>
       </Routes>
-      
+        
       <footer className="bg-dark text-white text-center " style={{marginTop: 100}}>
             &copy; 2025 Parit Rungrueang
       </footer>

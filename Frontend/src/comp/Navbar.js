@@ -1,37 +1,69 @@
 import './NavbarStyles.css';
-import { Component } from "react"; //use Component class form the react
+import { useEffect, useState } from "react";
 import { MenuItems } from "./MenuItems";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from 'axios';
 
-class Navbar extends Component {
-  render() {
-    //it like use render funtion to show the UI
-    return (
-      <nav className="NavbarItems">
-        <h1 className="navbar-logo">Title</h1>
+axios.defaults.withCredentials = true;
 
-        <ul className="nav-menu">
-          {MenuItems.map((item, index) => {
-            return (
-              <li key={index}>
-                <Link className={item.cName} to={item.url}>
-                  <i className={item.icon}></i>
-                  {item.title}
-                </Link>
-              </li>
-            );
-          })}
-          {/* <li>
-            <Link to="/Login">
-              <button>Login</button>
-            </Link>
-          </li> */}
-        </ul>
-      </nav>
+function Navbar() {
+  const [auth, setAuth] = useState(false);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    axios.get('http://localhost:8081')
+      .then(res => {
+        if (res.data.Status === "Success") {
+          setAuth(true);
+        } else {
+          setAuth(false);
+        }
+      })
+      .catch(err => console.log(err));
+  }, []);
+
+  const handleLogout = () => {
+    axios.post('http://localhost:8081/logout')
+      .then(() => {
+        setAuth(false);
+        navigate("/register");
+      })
+      .catch(err => console.log(err));
+  };
+  let buttonToShow;
+
+  if (auth) {
+    buttonToShow = <button onClick={handleLogout}>Logout</button>;
+  } else {
+    buttonToShow = (
+      <Link to="/Login">
+        <button>Login</button>
+      </Link>
     );
   }
+
+  return (
+
+    <nav className="NavbarItems">
+      <h1 className="navbar-logo">Title</h1>
+
+      <ul className="nav-menu">
+        {MenuItems.map((item, index) => (
+          <li key={index}>
+            <Link className={item.cName} to={item.url}>
+              <i className={item.icon}></i>
+              {item.title}
+            </Link>
+          </li>
+        ))}
+
+        <li>
+          {buttonToShow}
+        </li>
+      </ul>
+    </nav>
+  );
 }
-//.map() วนแต่ละสมาชิกแล้วทำเป็น <li> ใหม่
-export default Navbar; //basicly allow other file to asses Navbar
 
-
+export default Navbar;

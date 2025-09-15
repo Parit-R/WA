@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import Card from "../comp/Card";
+
 function About() {
-    const [rows, setRows] = useState([]);
+  /*const [rows, setRows] = useState([]); //ตั้งค่าเริ่มต้น array
 
   useEffect(() => {
     fetch("http://localhost:8081/About")
@@ -12,16 +13,16 @@ function About() {
 
   return (
     <div style={{ display: "flex", flexWrap: "wrap" }}>
-      {rows.map((row) => (
+      {rows.map((data) => ( 
         <Card 
-          key={row.id} 
-          name={row.name} 
-          text={row.text} 
-          url={row.url} 
+          key={data.id} 
+          name={data.name} 
+          text={data.text} 
+          url={data.url} 
         />
       ))}
     </div>
-  );
+  );*/
 }
 
 export default About;
